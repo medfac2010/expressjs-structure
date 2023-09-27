@@ -22,7 +22,6 @@ app.get('/', (req, res) => {
   res.status(200).json({'message': 'ok'});
 })
 
-app.use('/programming-languages', programmingLanguagesRouter);
 
 /* Error handler middleware */
 app.use((err, req, res, next) => {
