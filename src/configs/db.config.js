@@ -5,6 +5,7 @@ const db = {
     user: env.DB_USER,
     password: env.DB_PASSWORD,
     database: env.DB_NAME,
+    driver: env.DB_DRIVER,
     port: env.DB_PORT || 3306,
   /*   ssl: {
       mode: 'VERIFY_IDENTITY',
