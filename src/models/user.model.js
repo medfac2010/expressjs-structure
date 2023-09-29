@@ -2,8 +2,7 @@ const { getConnection } = require("./servces/db.service");
 const { DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");
 
-const con = getConnection();
-const User = con.define(
+const User = getConnection().define(
   "user",
   {
     Nom_prenom: {
@@ -75,19 +74,8 @@ const User = con.define(
       defaultValue: true,
     },
     conf_chemin: DataTypes.STRING,
-    created_at: {
-      type: "TIMESTAMP",
-      defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
-      allowNull: false,
-    },
-    updated_at: {
-      type: "TIMESTAMP",
-      defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
-      allowNull: false,
-    },
-  },
-  { timeStamp: true }
-);
+    
+  });
 
 User.belongsTo(Etablissement);
 

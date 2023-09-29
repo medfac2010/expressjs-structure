@@ -1,9 +1,10 @@
 const { DataTypes } = require("sequelize");
+const Equipment = require("./Equipement.model");
 const {getConnection}=requir('../services/db.service')
 
-const con =getConnection()
 
-const Etablissement= con.define('Etablissement',{
+
+const Etablissement= getConnection().define('Etablissement',{
     Nom_etabli: {
         type :DataTypes.STRING,
         allowNull:false,
@@ -17,6 +18,8 @@ const Etablissement= con.define('Etablissement',{
         allowNull:true,
     },
 })
+
 Etablissement.hasMany(User);
+Etablissement.hasMany(Equipment);
 
 module.exports= Etablissement

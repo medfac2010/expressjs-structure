@@ -11,5 +11,7 @@ nom : {
 Num: DataTypes.NUMBER,
 })
 
-Bureau.blongTo(Etablissement,{trought: Equipement})
+Bureau.blongsToMany(Etablissement,{trought: Equipement})
+Bureau.hasMany(Equipement)
+
 modules.export = Bureau
