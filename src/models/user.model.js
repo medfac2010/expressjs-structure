@@ -3,7 +3,7 @@ const { DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");
 
 const con = getConnection();
-const user = con.define(
+const User = con.define(
   "user",
   {
     name: {
@@ -61,14 +61,18 @@ const user = con.define(
     phone: {
         type: DataTypes.STRING,
         allowNull: false,
-        isEmail: true,
         unique: true,
         validate: {
+          is: /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/,
           len: {
-            min: 10,
-            msg: "Saisez un Email SVP",
+            args: [9,14],
+            msg: "Phone Numer",
           },
         },
+      },
+      active: {
+        type: DataTypes.BOOLEAN,
+        defaultValue:true,
       },
     created_at: {
       type: "TIMESTAMP",
@@ -84,4 +88,6 @@ const user = con.define(
   { timeStamp: true }
 );
 
-module.exports = user;
+User.belongsTo(Etablissement);
+
+module.exports = User;
