@@ -6,12 +6,12 @@ const con = getConnection();
 const User = con.define(
   "user",
   {
-    name: {
+    Nom_prenom: {
       type: DataTypes.STRING,
       allowNull: false,
       isAlpha: true,
     },
-    psudeo: {
+    User_name: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
@@ -58,22 +58,23 @@ const User = con.define(
         },
       },
     },
-    phone: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-        validate: {
-          is: /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/,
-          len: {
-            args: [9,14],
-            msg: "Phone Numer",
-          },
+    tel_mob: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        is: /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/,
+        len: {
+          args: [9, 14],
+          msg: "Phone Numer",
         },
       },
-      active: {
-        type: DataTypes.BOOLEAN,
-        defaultValue:true,
-      },
+    },
+    active: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    },
+    conf_chemin: DataTypes.STRING,
     created_at: {
       type: "TIMESTAMP",
       defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),

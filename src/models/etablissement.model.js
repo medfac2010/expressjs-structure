@@ -10,11 +10,11 @@ const Etablissement= con.define('Etablissement',{
     },
     Adresse_etabli: {
         type :DataTypes.STRING,
-        allowNull:false,
+        allowNull:true,
     },
     Code_postal: {
         type :DataTypes.STRING,
-        allowNull:false,
+        allowNull:true,
     },
 })
 Etablissement.hasMany(User);

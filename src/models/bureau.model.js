@@ -1,24 +1,15 @@
 const {DataTypes} = require('sequelize')
 const {getConnection} = require('./services/db.service');
+const Etablissement = require('./etablissement.model');
+const Equipement = require('./Equipement.model');
 
-const bureau = getConnection().Define("user",{
-name : {
+const Bureau = getConnection().Define("user",{
+nom : {
    type : DataTypes.STRING,
    AllowNull : false
 },
-email: {
-type : DataTypes.STRING,
-AllowNull : false,
-validator: {
-    value: email
-}
-},
-password: {
-    type : DataTypes.STRING,
-    validator : {
-        min : 10
-    }
-
+Num: DataTypes.NUMBER,
 })
 
-modules.export = user
+Bureau.blongTo(Etablissement,{trought: Equipement})
+modules.export = Bureau
