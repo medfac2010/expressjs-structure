@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const programmingLanguagesRouter = require('./src/routes/programmingLanguages.route');
 const cors = require('cors');
 require("dotenv").config()
 
@@ -9,7 +8,9 @@ require("dotenv").config()
 const app = express();
 const port = process.env.PORT || 3000;
 const server = process.env.SERVER || "localhost";
+
 app.use(bodyParser.json());
+
 app.use(cors());
 app.use(
   bodyParser.urlencoded({
@@ -34,5 +35,5 @@ app.use((err, req, res, next) => {
 
 // luanche server
 app.listen(port, '127.0.0.1', () => {
-  console.log(`Example app listening at ${server}:${port}`)
+  console.log(`Example app listening at http://${server}:${port}`)
 });
