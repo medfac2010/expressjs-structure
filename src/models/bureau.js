@@ -6,7 +6,7 @@ const Equipement = require("./Equipement");
 const Bureau = getConnection().Define("user", {
   nom: {
     type: DataTypes.STRING,
-    AllowNull: false,
+    allowNull: false,
   },
   Num: DataTypes.NUMBER,
 });
