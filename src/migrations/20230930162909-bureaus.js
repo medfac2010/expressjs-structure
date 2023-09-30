@@ -15,7 +15,7 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      num_bureau : {
+      numero_bureau : {
         type: DataTypes.NUMBER,
         allowNull: true,
       },
