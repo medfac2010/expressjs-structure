@@ -19,5 +19,18 @@
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql"
+  },
+  "define": {
+    "underscored": true,
+    "freezeTableName": true,
+    "charset": "utf8",
+    "dialectOptions": {
+      "collate": "utf8_general_ci"
+    },
+    "timestamps": true,
+    "createdAt": "created_at",
+    "updatedAt": "updated_at",
+    "createdBy": "created_by",
+    "updatedBy": "updated_by"
   }
 }

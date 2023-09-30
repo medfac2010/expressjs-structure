@@ -1,5 +1,5 @@
-const { Sequelize } = require('sequelize');
-const dbConfig = require('../configs/db.config');
+const { Sequelize } = require("sequelize");
+const dbConfig = require("../config/db.config");
 
 let sequelize = null;
 
@@ -10,22 +10,25 @@ function initializeConnection() {
     dbConfig.password,
     {
       host: dbConfig.host,
-      dialect: dbConfig.driver
-    })
+      dialect: dbConfig.driver,
+    }
+  )();
 }
 
 function getConnection() {
-  this.initializeConnection()
+  this.initializeConnection();
   return sequelize;
 }
 
-async function ConnectTest(con){
-  con.authenticate().then(() => {
-    console.log('Connection has been established successfully.');
-}).catch((error) => {
-    console.error('Unable to connect to the database: ', error);
-});
-
+async function ConnectTest(con) {
+  con
+    .authenticate()
+    .then(() => {
+      console.log("Connection has been established successfully.");
+    })
+    .catch((error) => {
+      console.error("Unable to connect to the database: ", error);
+    });
 }
 
 module.exports = { initializeConnection, getConnection, ConnectTest };

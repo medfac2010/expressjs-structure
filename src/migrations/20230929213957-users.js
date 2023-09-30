@@ -6,12 +6,18 @@ const bcrypt = require("bcrypt");
 module.exports = {
   async up(queryInterface, Sequelize) {
     return queryInterface.createTable("user", {
-      Nom_prenom: {
+      id: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
+        allowNull: false,
+        primaryKey: true,
+      },
+      nom_prenom: {
         type: DataTypes.STRING,
         allowNull: false,
         isAlpha: true,
       },
-      User_name: {
+      user_name: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
@@ -25,7 +31,7 @@ module.exports = {
           len: {
             args: [8, 100],
             msg: "le mot de passe doit contenu au minimume 8 caratéres ",
-          }, 
+          },
         },
         set(val) {
           if (val === this.confirmedPassowrd) {
@@ -62,18 +68,6 @@ module.exports = {
         defaultValue: true,
       },
       conf_chemin: DataTypes.STRING,
-      confirmedPassowrd: {
-        type: DataTypes.VIRTUAL,
-        allowNull: false,
-        validate: {
-          notNull: { msg: "Les mot de passe doit étre Edentique" },
-          notEmpty: { msg: "SVP resaisez le mot de passe pour confermer" },
-          len: {
-            args: [8, 100],
-            msg: "le mot de passe doit contenu au moins 8 caratéres et 100 au plus",
-          },
-        },
-      },
     });
   },
 
