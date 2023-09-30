@@ -8,7 +8,7 @@ module.exports = {
       id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        primarykey: true,
+        primaryKey: true,
         autoIncrement: true,
       },
       Nom_etabli: {

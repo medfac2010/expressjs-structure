@@ -8,7 +8,10 @@ const Bureau = getConnection().Define("user", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  Num: DataTypes.NUMBER,
+  numero_bureau : {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
 });
 Bureau.associate = function (models) {
   Bureau.blongsToMany(models.Etablissement, { trought: Equipement });

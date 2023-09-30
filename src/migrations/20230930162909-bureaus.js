@@ -7,17 +7,17 @@ module.exports = {
     await queryInterface.createTable("bureau", {
       id: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         primaryKey: true,
         autoIncrement: true,
-        allowNull: false,
+      },
+      numero_bureau : {
+        type: DataTypes.INTEGER,
+        allowNull: true,
       },
       nom : {
         type: DataTypes.STRING,
         allowNull: false,
-      },
-      numero_bureau : {
-        type: DataTypes.NUMBER,
-        allowNull: true,
       },
     });
   },
