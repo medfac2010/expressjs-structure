@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const Equipment = require("./Equipement.model");
+const Equipment = require("./Equipement");
 const {getConnection}=requir('../services/db.service')
 
 
@@ -19,7 +19,8 @@ const Etablissement= getConnection().define('Etablissement',{
     },
 })
 
-Etablissement.hasMany(User);
-Etablissement.hasMany(Equipment);
-
+Etablissement.associate = function (models) {
+Etablissement.hasMany(models.User);
+Etablissement.hasMany(models.Equipment);
+}
 module.exports= Etablissement

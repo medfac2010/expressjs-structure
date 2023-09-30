@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const {getConnection} =require('../services/db.service')
-const Etablissement = require('./etablissement.model')
-const Bureau = require('./bureau.model')
+const Etablissement = require('./etablissement')
+const Bureau = require('./bureau')
 const Application = require('./application.model')
 
 
@@ -105,9 +105,9 @@ const Equipment = getConnection().define('Equipment', {
     Autrise_access : DataTypes.BOOLEAN,
     sec_info : DataTypes.BOOLEAN,
 })
-
-Equipment.belongsTo(Etablissement);
-Equipment.belongsTo(Bureau);
-Equipment.belongsToMany(Application, { through: 'Equipment_Applications' });
-
+Equipment.associate = function (models) {
+Equipment.belongsTo(models.Etablissement);
+Equipment.belongsTo(models.Bureau);
+Equipment.belongsToMany(models.Application, { through: 'Equipment_Applications' });
+}
 module.exports = Equipment

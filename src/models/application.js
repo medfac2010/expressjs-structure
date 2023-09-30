@@ -1,6 +1,6 @@
 const { DataTypes } = require("sequelize");
 const {getConnection} =require('../services/db.service')
-const Equipement = require('./Equipement.model')
+const Equipement = require('./Equipement')
 
 const Application = getConnection().Define("application",{
 
@@ -44,7 +44,7 @@ const Application = getConnection().Define("application",{
     app_path : DataTypes.STRING,
 
 })
-
-Application.blongsToMany(Equipement, { through: 'Equipment_Applications' })
-
+Application.associate = function (models) {
+Application.blongsToMany(models.Equipement, { through: 'Equipment_Applications' })
+}
 module.exports = Application;
