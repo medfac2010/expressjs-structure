@@ -1,4 +1,4 @@
-const { getConnection } = require("./servces/db.service");
+const { getConnection } = require("../services/db.service");
 const { DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");
 

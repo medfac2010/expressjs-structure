@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const { getConnection } = require("../services/db.service");
 const Equipement = require("./Equipement");
 
-const Application = getConnection().Define("application", {
+const Application = getConnection().define("application", {
   app_name: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -43,7 +43,7 @@ const Application = getConnection().Define("application", {
   app_path: DataTypes.STRING,
 });
 Application.associate = function (models) {
-  Application.blongsToMany(models.Equipement, {
+  Application.belongsToMany(Equipement, {
     through: "Equipment_Applications",
   });
 };

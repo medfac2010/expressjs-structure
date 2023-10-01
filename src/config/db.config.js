@@ -1,3 +1,4 @@
+require("dotenv").config();
 const env = process.env;
 //const fs = require('fs');
 const db = {

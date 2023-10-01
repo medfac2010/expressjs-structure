@@ -1,8 +1,8 @@
 const { DataTypes } = require("sequelize");
-const {getConnection} =require('../services/db.service')
+const { getConnection } = require("../services/db.service");
 const Etablissement = require('./etablissement')
 const Bureau = require('./bureau')
-const Application = require('./application.model')
+const Application = require('./application')
 
 
 const Equipment = getConnection().define('Equipment', {
@@ -38,7 +38,7 @@ const Equipment = getConnection().define('Equipment', {
         type: DataTypes.STRING,
         allowNull: false,
         validate:{
-            is: /^[0-9a-f]{1,2}([\.:-])(?:[0-9a-f]{1,2}\1){4}[0-9a-f]{1,2}/$,
+            is: /^[0-9a-f]{1,2}([\.:-])(?:[0-9a-f]{1,2}\1){4}[0-9a-f]{1,2}$/i,
             len: 17,
         }
     },
@@ -56,9 +56,9 @@ const Equipment = getConnection().define('Equipment', {
     },
     tel_mob: {
         type: DataTypes.STRING,
-        allowNull: True,
+        allowNull: true,
         validate: {
-        is: /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/,
+        is: /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/i,
         len: {
             args: [9, 14],
             msg: "Numero de Mobile non valide",
@@ -106,8 +106,8 @@ const Equipment = getConnection().define('Equipment', {
     sec_info : DataTypes.BOOLEAN,
 })
 Equipment.associate = function (models) {
-Equipment.belongsTo(models.Etablissement);
-Equipment.belongsTo(models.Bureau);
-Equipment.belongsToMany(models.Application, { through: 'Equipment_Applications' });
+Equipment.belongsTo(Etablissement);
+Equipment.belongsTo(Bureau);
+Equipment.hasMany(Application, { through: 'Equipment_Applications' });
 }
 module.exports = Equipment

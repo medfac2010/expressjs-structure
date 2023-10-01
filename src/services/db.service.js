@@ -4,7 +4,7 @@ const dbConfig = require("../config/db.config");
 let sequelize = null;
 
 function initializeConnection() {
-  sequelize = new new Sequelize(
+  sequelize = new Sequelize(
     dbConfig.database,
     dbConfig.user,
     dbConfig.password,
@@ -12,11 +12,11 @@ function initializeConnection() {
       host: dbConfig.host,
       dialect: dbConfig.driver,
     }
-  )();
+  );
 }
 
 function getConnection() {
-  this.initializeConnection();
+  initializeConnection();
   return sequelize;
 }
 

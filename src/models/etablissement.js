@@ -1,6 +1,6 @@
 const { DataTypes } = require("sequelize");
 const Equipment = require("./Equipement");
-const { getConnection } = requir("../services/db.service");
+const { getConnection } = require("../services/db.service");
 
 const Etablissement = getConnection().define("Etablissement", {
   Nom_etabli: {
