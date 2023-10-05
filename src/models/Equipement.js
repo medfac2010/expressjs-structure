@@ -1,11 +1,11 @@
 const { DataTypes } = require("sequelize");
 const { getConnection } = require("../services/db.service");
-const Etablissement = require('./etablissement')
-const Bureau = require('./bureau')
-const Application = require('./application')
+//const Etablissement = require('./etablissement')
+//const Bureau = require('./bureau')
+//const Application = require('./application')
 
 
-const Equipment = getConnection().define('Equipment', {
+const Equipment = getConnection().define('equipment', {
     ip_add: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -106,8 +106,8 @@ const Equipment = getConnection().define('Equipment', {
     sec_info : DataTypes.BOOLEAN,
 })
 Equipment.associate = function (models) {
-Equipment.belongsTo(Etablissement);
-Equipment.belongsTo(Bureau);
-Equipment.hasMany(Application, { through: 'Equipment_Applications' });
+Equipment.belongsTo(models.etablissement);
+Equipment.belongsTo(models.bureau);
+Equipment.hasMany(models.application,{through: "equipment_application"});
 }
 module.exports = Equipment

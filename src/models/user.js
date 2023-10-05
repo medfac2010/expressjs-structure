@@ -74,6 +74,6 @@ const User = getConnection().define("user", {
   conf_chemin: DataTypes.STRING,
 });
 User.associate = function (models) {
-  User.belongsTo(models.Etablissement);
+  User.belongsTo(models.etablissement);
 };
 module.exports = User;

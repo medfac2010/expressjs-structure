@@ -4,7 +4,7 @@ const Etablissement = require("./etablissement");
 const Equipement = require("./Equipement");
 
 
-const Bureau = getConnection().define("user", {
+const Bureau = getConnection().define("bureau", {
   nom: {
     type: DataTypes.STRING,
     allowNull: false,

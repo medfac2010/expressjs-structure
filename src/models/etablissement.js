@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const Equipment = require("./Equipement");
 const { getConnection } = require("../services/db.service");
 
-const Etablissement = getConnection().define("Etablissement", {
+const Etablissement = getConnection().define("etablissement", {
   Nom_etabli: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -18,7 +18,7 @@ const Etablissement = getConnection().define("Etablissement", {
 });
 
 Etablissement.associate = function (models) {
-  Etablissement.hasMany(models.User);
+  Etablissement.hasMany(models.user);
   Etablissement.hasMany(models.Equipment);
 };
 module.exports = Etablissement;

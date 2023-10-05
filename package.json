@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "jest"
+    "migrate:db": "node ./src/models/migrate.model.js"
   },
   "repository": {
     "type": "git",
