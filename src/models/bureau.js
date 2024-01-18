@@ -15,7 +15,7 @@ const Bureau = getConnection().define("bureau", {
   },
 });
 Bureau.associate = function (models) {
-  Bureau.blongsToMany(models.Etablissement, { trought: Equipement });
-  Bureau.hasMany(models.Equipement);
+  Bureau.blongsToMany(models.etablissement, { trought: Equipement });
+  Bureau.hasMany(models.equipement);
 };
 module.exports = Bureau;

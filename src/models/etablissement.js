@@ -1,5 +1,4 @@
 const { DataTypes } = require("sequelize");
-const Equipment = require("./Equipement");
 const { getConnection } = require("../services/db.service");
 
 const Etablissement = getConnection().define("etablissement", {
@@ -19,6 +18,6 @@ const Etablissement = getConnection().define("etablissement", {
 
 Etablissement.associate = function (models) {
   Etablissement.hasMany(models.user);
-  Etablissement.hasMany(models.Equipment);
+  Etablissement.hasMany(models.equipment);
 };
 module.exports = Etablissement;

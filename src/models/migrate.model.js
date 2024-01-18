@@ -1,6 +1,6 @@
 const db = require('./index');
 
-
+/* 
 async function assertDatabaseConnectionOk() {
 	console.log(`Checking database connection...`);
 	try {
@@ -19,7 +19,7 @@ async function init() {
 }
 
 init();
-
+ */
 Object.keys(db).forEach((modelName) => {
     console.log(db[modelName]);
 

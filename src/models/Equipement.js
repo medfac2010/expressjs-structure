@@ -108,6 +108,5 @@ const Equipment = getConnection().define('equipment', {
 Equipment.associate = function (models) {
 Equipment.belongsTo(models.etablissement);
 Equipment.belongsTo(models.bureau);
-Equipment.hasMany(models.application,{through: "equipment_application"});
 }
 module.exports = Equipment

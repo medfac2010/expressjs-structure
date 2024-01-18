@@ -1,6 +1,6 @@
 const { DataTypes } = require("sequelize");
 const { getConnection } = require("../services/db.service");
-
+const Equipment = require("./Equipement");
 
 const Application = getConnection().define("application", {
   app_name: {
@@ -42,9 +42,12 @@ const Application = getConnection().define("application", {
   desc: DataTypes.STRING,
   app_path: DataTypes.STRING,
 });
-Application.associate = function (models) {
+Application.associate= function (models) {
   Application.belongsToMany(models.equipement, {
     through: "equipment_applications",
   });
-};
+  Equipment.belongsToMany(models.application, {
+    through: "equipment_applications",
+  });
+}
 module.exports = Application;
