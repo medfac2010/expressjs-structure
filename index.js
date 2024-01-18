@@ -1,13 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-require("dotenv").config()
+const path = require('path');
+require("dotenv").config();
+
 
 // app first configuration
 
 const app = express();
 const port = process.env.PORT || 3000;
 const server = process.env.SERVER || "localhost";
+
+app.set('views engine',"ejs");
+app.set('views', path.join(__dirname,'src','views'));
+app.set('public',express.static(path.join(__dirname,'public')));
 
 app.use(bodyParser.json());
 
@@ -17,10 +23,11 @@ app.use(
     extended: true,
   })
 );
-
+console.log(path.resolve('public'));
 // routes for application
+
 app.get('/', (req, res) => {
-  res.status(200).json({'message': 'ok'});
+  res.render('index.ejs')
 })
 
 
