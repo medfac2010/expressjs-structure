@@ -13,8 +13,8 @@ const server = process.env.SERVER || "localhost";
 
 app.set('views engine',"ejs");
 app.set('views', path.join(__dirname,'src','views'));
-app.set('public',express.static(path.join(__dirname,'public')));
-
+app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname,'src','views','assets')));
 app.use(bodyParser.json());
 
 app.use(cors());
@@ -23,7 +23,7 @@ app.use(
     extended: true,
   })
 );
-console.log(path.resolve('public'));
+console.log(path.resolve('views'));
 // routes for application
 
 app.get('/', (req, res) => {
